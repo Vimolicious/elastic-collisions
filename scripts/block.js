@@ -42,7 +42,7 @@ class Block {
 
     fill(255);
     textAlign(CENTER, BOTTOM);
-    textSize(20);
+    textSize(30);
     text(
       `${this.mass.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} kg`,
       this.x + this.size / 2,
