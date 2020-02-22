@@ -16,6 +16,11 @@ body {
   font-weight: 600;
 }
 
+a {
+  color: rgb(101, 173, 255);
+  padding: 1rem;
+}
+
 button {
   background-color: rgb(189, 29, 29);
   color: white;
@@ -41,9 +46,10 @@ button:active {
 
 #info {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   top: 0;
   right: 0;
-  height: 100px;
   width: 200px;
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.3);
