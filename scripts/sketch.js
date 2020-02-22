@@ -53,10 +53,10 @@ function makeBlocks() {
 
   blockA = new Block(150, blockASize, 1, 0, 0);
   blockB = new Block(
-    400,
+    500,
     min(500, blockASize * digits), // Size
     100 ** (digits - 1), // Mass of blockB
-    -1,
+    -2,
     blockASize
   );
 }
@@ -65,6 +65,8 @@ function draw() {
   if (digits != digitsSlider.value()) {
     digits = digitsSlider.value();
     makeBlocks();
+    paused = true;
+    select('#play-pause-btn').html(paused ? 'Play' : 'Pause');
   }
 
   background(0);
@@ -76,12 +78,16 @@ function draw() {
     const hitsWall = blockA.hitsWall();
 
     if (hitsWall || blockA.collidesWith(blockB)) {
+      // If either block has a collision, move them back so they aren't
       blockA.x -= blockA.vel;
       blockB.x -= blockB.vel;
 
+      // If the collision was block A hitting the wall
       if (hitsWall) {
+        // Flip it's velocity around
         blockA.reverse();
       } else {
+        // Otherwise, calculate the new velocities of the blocks using the law of conservation of momentum
         const v1 = blockA.bounceOff(blockB);
         const v2 = blockB.bounceOff(blockA);
 
@@ -105,22 +111,19 @@ function draw() {
   blockA.show();
   blockB.show();
 
-  const digitsDisplay = `${100 ** (digits - 1)} times the mass`;
+  const digitsDisplay = `${
+    digits > 1 ? `1E+${2 * (digits - 1)} times the` : 'They have the same'
+  } mass`;
   if (digitsDiv.elt.innerHTML != digitsDisplay) {
     digitsDiv.html(digitsDisplay);
   }
 
-  // const countDiv = select('#collision-count');
-  // if (countDiv.elt.innerHTML !== count) {
-  //   countDiv.html(`#Collisions: ${count}`);
-  // }
-
-  textAlign(LEFT);
+  textAlign(LEFT, CENTER);
   if (showCountCheckbox.checked()) {
     fill(255);
     textSize(80);
     textFont('system-ui');
-    text(`#Collisions: ${count}`, 100, 200);
+    text(`#Collisions: ${count}`, 100, 115);
   }
 }
 

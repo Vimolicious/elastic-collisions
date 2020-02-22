@@ -20,6 +20,8 @@ class Block {
   }
 
   bounceOff(otherBlock) {
+    // v1 = ((m1 - m2) / (m1 + m2)) * u1 +
+    //      (2*m2/(m1 + m2)) * u2
     const massSum = this.mass + otherBlock.mass;
     const newVelocity =
       ((this.mass - otherBlock.mass) / massSum) * this.vel +
@@ -39,8 +41,12 @@ class Block {
     rect(x, height - this.size, this.size, this.size);
 
     fill(255);
-    textAlign(CENTER);
+    textAlign(CENTER, BOTTOM);
     textSize(20);
-    text(`${this.mass} kg`, this.x + this.size / 2, height - this.size - 10);
+    text(
+      `${this.mass.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} kg`,
+      this.x + this.size / 2,
+      height - this.size - 10
+    );
   }
 }
