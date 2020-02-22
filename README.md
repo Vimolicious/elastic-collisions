@@ -10,4 +10,4 @@ This little project visualizes the curious phenominon revealed when having perfe
 
 Grant Sanderson of 3blue1brown has a [wonderful explanation](https://youtu.be/jsYwFizhncE) of why this occurs
 
-[Check it out!](https://vimolicious.github.io/pi-and-momentum)
+[Check it out!](https://vimolicious.github.io/elastic-collisions)
