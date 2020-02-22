@@ -19,7 +19,7 @@ let showCountCheckbox;
 let clackSound;
 
 function preload() {
-  clackSound = loadSound('../assets/clack.wav');
+  clackSound = loadSound('assets/clack.wav');
 }
 
 function setup() {
